@@ -8,11 +8,14 @@
         body { font-family: system-ui, sans-serif; background: #f8fafc; color: #0f172a; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
         .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); text-align: center; max-width: 400px; width: 100%; }
         h1 { margin-top: 0; }
-        a { display: block; padding: 12px 24px; margin-bottom: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: all 0.2s; }
+        a,button { display: block; padding: 12px 24px; margin-bottom: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: all 0.2s; width:100%; box-sizing: border-box; border:0; cursor:pointer; font:inherit; }
         .btn-admin { background: #1e293b; color: white; }
         .btn-admin:hover { background: #0f172a; }
         .btn-mobile { background: #2563eb; color: white; }
         .btn-mobile:hover { background: #1d4ed8; }
+        .btn-demo { background:#0f766e; color:white; }
+        .btn-demo:not(:disabled):hover { background:#115e59; }
+        .btn-demo:disabled { opacity: 0.6; cursor: not-allowed; }
     </style>
 </head>
 <body>
@@ -21,6 +24,14 @@
         <p>Select an interface to preview:</p>
         <a href="admin-console.html" class="btn-admin">Admin Console (Desktop)</a>
         <a href="mobile-app.html" class="btn-mobile">Mobile App</a>
+        <button class="btn-demo" disabled title="Coming soon">Start Guided E2E Demo</button>
     </div>
+    <script>
+      function startDemo(){
+        localStorage.setItem('fms_guided_demo','1');
+        localStorage.setItem('fms_guided_step','0');
+        location.href='admin-console.html?demo=1&step=0';
+      }
+    </script>
 </body>
 </html>
